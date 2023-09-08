@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend</title>
+</head>
+<body>
+
+<input type="text" id="username" placeholder="Enter username">
+<button onclick="displayGreeting()">Greet</button>
+
+<div id="greeting"></div>
+
+<script>
+    function displayGreeting() {
+        document.getElementById('greeting').innerHTML = "Hello, " + document.getElementById('username').value + "!";
+
+        fetch('https://example.com/userdata?user=' + document.getElementById('username').value)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('greeting').innerHTML += '<br>Your data: ' + JSON.stringify(data);
+            });
+    }
+</script>
+
+</body>
+</html>
